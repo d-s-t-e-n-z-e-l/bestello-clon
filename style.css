@@ -1,0 +1,10 @@
+* {
+    outline: 1px solid red;
+}
+
+html,
+body {
+    scroll-behavior: smooth;
+    margin: 0;
+    /* overflow: hidden;  */
+}
