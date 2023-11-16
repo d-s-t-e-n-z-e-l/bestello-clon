@@ -1,10 +1,295 @@
-* {
+/* * {
     outline: 1px solid red;
-}
+} */
 
 html,
 body {
     scroll-behavior: smooth;
     margin: 0;
     /* overflow: hidden;  */
+    font-family: 'Raleway';
+}
+
+
+.header {
+    background-color: #F86600;
+    width: 100vw;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+}
+
+.maindiv {
+    display: flex;
+    overflow: auto;
+}
+
+.icons {
+    cursor: pointer;
+}
+
+.asidebasket {
+    width: 24vw;
+    position: fixed;
+    top: 64px;
+    right: 0px;
+    z-index: 1;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin-right: 8px;
+}
+
+.basketcontent {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px
+}
+
+.basketheadline {
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.baskettext {
+    font-size: 16px;
+    text-align: center;
+}
+
+.basketimg {
+    width: 32px;
+    height: 32px;
+}
+
+.basketplaceholder {
+    position: relative;
+    height: 177px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.menucounter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.counter {
+    display: flex;
+    gap: 14px;
+
+}
+
+.countbutton {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    font-size: 22px;
+    background-color: white;
+    border-radius: 8px;
+    border-style: solid;
+    border-color: grey;
+}
+
+.bin{
+    width: 30px;
+    height: 30px;
+}
+
+.singlepricecount{
+    display: flex;
+    align-items: center;
+}
+
+.pricefigure {
+    margin-top: 40px !important;
+    margin-bottom: 24px !important;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pricing {
+    display: flex;
+    justify-content: space-between;
+}
+
+.wholesum {
+    border-width: thin;
+    margin-top: 16px;
+    font-weight: bold;
+    border-top: solid;
+    border-color: grey;
+    color: black;
+}
+
+.toLess {
+    text-align: center;
+}
+
+.buttondiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
+.orderbutton {
+    background-color: rgb(42, 42, 224);
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 180px;
+    border: unset;
+}
+
+
+
+
+
+.menudata {
+    display: flex;
+    gap: 9px
+}
+
+.restaurantsection {
+    width: 75vw;
+    margin-bottom: 28px;
+}
+
+.restaurantimgs {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.restaurantlogo {
+    position: absolute;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    top: 200px;
+}
+
+
+.indianfood {
+    object-fit: cover;
+    width: 75vw;
+    height: 250px;
+}
+
+.figuremargin {
+    margin: 0;
+}
+
+.restaurantinfo {
+    margin: 20px;
+}
+
+.ratingflexdiv {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.rightdiv {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.restaurantname {
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.ratingfigure {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.stars {
+    height: 16px;
+    width: 16px;
+}
+
+.menuband {
+    display: flex;
+    background-color: #F7F6F2;
+    height: 42px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 21px;
+    padding-left: 22px;
+}
+
+.menulink {
+    text-decoration: none;
+    color: #808080;
+    font-weight: bold;
+}
+
+.menucollection {
+    margin-left: 22px;
+    margin-top: 10px;
+}
+
+.menuheadline {
+    font-weight: bold;
+    font-size: 24px;
+    margin-bottom: 8px;
+    margin-left: 8px;
+}
+
+.menuname {
+    font-weight: bold;
+}
+
+.menudescription {
+    font-weight: lighter;
+}
+
+.menuprice {
+    color: #F86600;
+    font-weight: bold;
+}
+
+.menuinfos {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.menuoptions {
+    margin-top: 13px;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-style: ridge;
+    border-radius: 8px;
+    border-width: thin;
+    padding: 8px;
+}
+
+.plusbutton {
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+    font-size: 23px;
+    background-color: white;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: grey;
 }

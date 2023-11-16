@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
-    <link rel="icon" href="" type="image/png">
+    <link rel="icon" href="img/icon.webp" type="image/png">
     <title>Lieferando</title>
 </head>
 
@@ -17,92 +17,100 @@
         <img src="img/logo.png" alt="logo">
     </header>
     <main class="maindiv">
-        <aside class="asidebasket">
-            <figure>
-                <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
-                <div class="basketplaceholder">
-                    <img src="img/empty_basket.png" alt="emptybasket">
-                </div>
-                <div class="menucounter">
-                    <div class="menudata">
-                        <p>Var Anzahl</p>
-                        <p>Var Gericht</p>
-                    </div>
-                    <div class="counter">
-                        <p>-</p>
-                        <p>+</p>
-                        <p>Var Preis €</p>
-                        <img src="img/bin.png" alt="bin">
-                    </div>
-                </div>
-            </figure>
-            <figure>
-                <div>
-                    <p>Zwischensumme</p>
-                    <p>Var Preis €</p>
-                </div>
-                <div>
-                    <p>Lieferkosten</p>
-                    <p>7€</p>
-                </div>
-                <div>
-                    <p>Gesamtpreis</p>
-                    <p>Var Preis €</p>
-                </div>
-            </figure>
-            <figure>
-                <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
-                <p>Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem Mindestbestellwert von 74€
-                    (exkl. Lieferkosten)</p>
-            </figure>
-            <button>BESTELLEN</button>
 
-        </aside>
         <section class="restaurantsection">
-            <figure><img src="img/indian_food.jpg" alt="indianfood">
-                <img src="img/restaurant_logo.jpg" alt="restaurantlogo">
+            <figure class="restaurantimgs figuremargin"><img class="indianfood" src="img/indian_food.jpg"
+                    alt="indianfood">
+                <img class="restaurantlogo" src="img/restaurant_logo.jpg" alt="restaurantlogo">
             </figure>
             <article class="restaurantinfo">
-                <p>
-                    <span>India Palace</span>
-                <figure>
-                    <img src="img/star_full.png" alt="star">
-                    <img src="img/star_full.png" alt="star">
-                    <img src="img/star_full.png" alt="star">
-                    <img src="img/star_full.png" alt="star">
-                    <img src="img/star_empty.png" alt="star">
-                    <span>(534 Bewertungen)</span>
-                </figure>
-                </p>
-                <p>
-                    <img src="img/info.png" alt="info">
-                    <img src="img/herz.png" alt="heart">
-                </p>
-                <p class="menuband">
-                    <span>Vorspeisen</span>
-                    <span>Suppen</span>
-                    <span>Salate</span>
-                    <span>Hauptgerichte</span>
-                    <spn>Kindergerichte</spn>
-                    <spn>Nachspeisen</spn>
-                </p>
+                <div class="ratingflexdiv">
+                    <div class="rightdiv">
+                        <span class="restaurantname">India Palace</span>
+                        <figure class="ratingfigure figuremargin">
+                            <img class="stars" src="img/star_full.png" alt="star">
+                            <img class="stars" src="img/star_full.png" alt="star">
+                            <img class="stars" src="img/star_full.png" alt="star">
+                            <img class="stars" src="img/star_full.png" alt="star">
+                            <img class="stars" src="img/star_empty.png" alt="star">
+                            <span>(534 Bewertungen)</span>
+                        </figure>
+                    </div>
+                    <div>
+                        <img class="icons" src="img/info.png" alt="info">
+                        <img class="icons" src="img/herz.png" alt="heart">
+                    </div>
+                </div>
             </article>
+            <div class="menuband">
+                <a class="menulink" href="">Vorspeisen</a>
+                <a class="menulink" href="">Suppen</a>
+                <a class="menulink" href="">Salate</a>
+                <a class="menulink" href="">Hauptgerichte</a>
+                <a class="menulink" href="">Kindergerichte</a>
+                <a class="menulink" href="">Nachspeisen</a>
+            </div>
             <article class="menulist">
                 <!-- Inhalt dieses Containers wird gerendert  mit einer for Schleife-->
-                <figure class="menucollection">
-                    <span>Beliebt</span>
-                    <p class="menuoptions">
-                    <div class="menuinfos">
-                        <!-- Inhalt dieses Containers wird auch gerendert mit einer untergeordneten for Schleife -->
-                        <p>Gerichtname</p>
-                        <p>Beschreibung</p>
-                        <p>Preis €</p>
+                <figure class="menucollection figuremargin">
+                    <span class="menuheadline">Beliebt</span>
+                    <div class="menuoptions">
+                        <div class="menuinfos">
+                            <!-- Inhalt dieses Containers wird auch gerendert mit einer untergeordneten for Schleife -->
+                            <span class="menuname">Gerichtname</span>
+                            <span class="menu">Beschreibung</span>
+                            <span class="menuprice">Preis €</span>
+                        </div>
+                        <button class="plusbutton">+</button>
                     </div>
-                    <div>+</div>
-                    </p>
                 </figure>
             </article>
         </section>
+        <aside class="asidebasket">
+            <figure class="figuremargin">
+                <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
+                <div class="basketplaceholder">
+                    <div class="basketcontent">
+                        <img class="basketimg" src="img/basket.png" alt="basket">
+                        <span class="basketheadline">Fülle deinen Warenkorb</span>
+                        <span class="baskettext">Füge einige leckere Gerichte aus der <br>Speisekarte hinzu und bestelle
+                            dein Essen.</span>
+                    </div>
+                </div>
+                <div class="menucounter">
+                    <div class="menudata">
+                        <span>5</span>
+                        <span>Tikka Masala</span>
+                    </div>
+                    <div class="counter">
+                        <button class="countbutton">+</button>
+                        <button class="countbutton">-</button>
+                        <span class="singlepricecount">7,99€</span>
+                        <img class="icons bin" src="img/bin.png" alt="bin">
+                    </div>
+                </div>
+            </figure>
+            <figure class="figuremargin pricefigure">
+                <div class="pricing">
+                    <span>Zwischensumme</span>
+                    <span>99,99 €</span>
+                </div>
+                <div class="pricing">
+                    <span>Lieferkosten</span>
+                    <span>7€</span>
+                </div>
+                <div class="pricing wholesum">
+                    <span>Gesamtpreis</span>
+                    <span>99,99€</span>
+                </div>
+            </figure>
+            <figure class="figuremargin">
+                <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
+                <span class="toLess">Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem
+                    Mindestbestellwert von 7€ (exkl. Lieferkosten)</span>
+            </figure>
+            <div class="buttondiv"><button class="orderbutton">BESTELLEN</button></div>
+        </aside>
 
 
     </main>
@@ -122,7 +130,8 @@
         <a href="https://www.flaticon.com/de/kostenlose-icons/die-info" title="die info Icons">Die info Icons erstellt
             von Freepik - Flaticon</a>
         <br>
-        <a href="https://www.flaticon.com/de/kostenlose-icons/herz" title="herz Icons">Herz Icons erstellt von Freepik - Flaticon</a>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/herz" title="herz Icons">Herz Icons erstellt von Freepik -
+            Flaticon</a>
         <br>
     </footer>
 
