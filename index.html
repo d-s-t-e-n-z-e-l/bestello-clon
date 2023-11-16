@@ -10,17 +10,119 @@
     <link rel="icon" href="" type="image/png">
     <title>Lieferando</title>
 </head>
-<header>
-    <img src="" alt="">
-    <span></span>
-</header>
+
 
 <body>
+    <header class="header">
+        <img src="img/logo.png" alt="logo">
+    </header>
+    <main class="maindiv">
+        <aside class="asidebasket">
+            <figure>
+                <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
+                <div class="basketplaceholder">
+                    <img src="img/empty_basket.png" alt="emptybasket">
+                </div>
+                <div class="menucounter">
+                    <div class="menudata">
+                        <p>Var Anzahl</p>
+                        <p>Var Gericht</p>
+                    </div>
+                    <div class="counter">
+                        <p>-</p>
+                        <p>+</p>
+                        <p>Var Preis €</p>
+                        <img src="img/bin.png" alt="bin">
+                    </div>
+                </div>
+            </figure>
+            <figure>
+                <div>
+                    <p>Zwischensumme</p>
+                    <p>Var Preis €</p>
+                </div>
+                <div>
+                    <p>Lieferkosten</p>
+                    <p>7€</p>
+                </div>
+                <div>
+                    <p>Gesamtpreis</p>
+                    <p>Var Preis €</p>
+                </div>
+            </figure>
+            <figure>
+                <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
+                <p>Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem Mindestbestellwert von 74€
+                    (exkl. Lieferkosten)</p>
+            </figure>
+            <button>BESTELLEN</button>
+
+        </aside>
+        <section class="restaurantsection">
+            <figure><img src="img/indian_food.jpg" alt="indianfood">
+                <img src="img/restaurant_logo.jpg" alt="restaurantlogo">
+            </figure>
+            <article class="restaurantinfo">
+                <p>
+                    <span>India Palace</span>
+                <figure>
+                    <img src="img/star_full.png" alt="star">
+                    <img src="img/star_full.png" alt="star">
+                    <img src="img/star_full.png" alt="star">
+                    <img src="img/star_full.png" alt="star">
+                    <img src="img/star_empty.png" alt="star">
+                    <span>(534 Bewertungen)</span>
+                </figure>
+                </p>
+                <p>
+                    <img src="img/info.png" alt="info">
+                    <img src="img/herz.png" alt="heart">
+                </p>
+                <p class="menuband">
+                    <span>Vorspeisen</span>
+                    <span>Suppen</span>
+                    <span>Salate</span>
+                    <span>Hauptgerichte</span>
+                    <spn>Kindergerichte</spn>
+                    <spn>Nachspeisen</spn>
+                </p>
+            </article>
+            <article class="menulist">
+                <!-- Inhalt dieses Containers wird gerendert  mit einer for Schleife-->
+                <figure class="menucollection">
+                    <span>Beliebt</span>
+                    <p class="menuoptions">
+                    <div class="menuinfos">
+                        <!-- Inhalt dieses Containers wird auch gerendert mit einer untergeordneten for Schleife -->
+                        <p>Gerichtname</p>
+                        <p>Beschreibung</p>
+                        <p>Preis €</p>
+                    </div>
+                    <div>+</div>
+                    </p>
+                </figure>
+            </article>
+        </section>
+
+
+    </main>
+
     <footer><a href="https://www.flaticon.com/de/kostenlose-icons/entfernen" title="entfernen Icons">Entfernen Icons
             erstellt von Freepik - Flaticon</a>
         <br>
         <a href="https://www.flaticon.com/de/kostenlose-icons/korbladen" title="korbladen Icons">Korbladen Icons
             erstellt von Freepik - Flaticon</a>
+        <br>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/star" title="star Icons">Star Icons erstellt von Pixel
+            perfect - Flaticon</a>
+        <br>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/star" title="star Icons">Star Icons erstellt von Pixel
+            perfect - Flaticon</a>
+        <br>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/die-info" title="die info Icons">Die info Icons erstellt
+            von Freepik - Flaticon</a>
+        <br>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/herz" title="herz Icons">Herz Icons erstellt von Freepik - Flaticon</a>
         <br>
     </footer>
 
