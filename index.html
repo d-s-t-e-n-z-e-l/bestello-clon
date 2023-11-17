@@ -12,7 +12,7 @@
 </head>
 
 
-<body>
+<body onload="load()">
     <header class="header">
         <img src="img/logo.png" alt="logo">
         <div onclick="showflexbasket()" id="" class="smallbasket"><img class="smallbasketimg" src="img/basket.png"
@@ -52,7 +52,7 @@
                 <a class="menulink" href="">Kindergerichte</a>
                 <a class="menulink" href="">Nachspeisen</a>
             </div>
-            <article class="menulist">
+            <article id="menulist" class="menulist">
                 <!-- Inhalt dieses Containers wird gerendert  mit einer for Schleife-->
                 <figure class="menucollection figuremargin">
                     <span class="menuheadline">Beliebt</span>

@@ -46,7 +46,6 @@ body {
     align-items: center;
     font-size: 10px;
     font-weight: bold;
-    color: white;
 }
 
 .maindiv {
@@ -297,6 +296,11 @@ body {
     text-decoration: none;
     color: #808080;
     font-weight: bold;
+}
+
+.menulink:hover{
+    cursor: pointer;
+    color: #F86600;
 }
 
 .menucollection {
