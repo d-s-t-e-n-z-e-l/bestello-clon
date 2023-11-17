@@ -18,6 +18,35 @@ body {
     display: flex;
     align-items: center;
     position: fixed;
+    justify-content: space-between;
+}
+
+.smallbasket {
+    display: flex;
+    flex-direction: column;
+    margin-right: 32px;
+    padding: 3px;
+    display: none;
+    cursor: pointer;
+}
+
+.smallbasketimg {
+    width: 32px;
+    height: 32px;
+}
+
+.smallmenucounter {
+    background-color: rgb(42, 42, 224);
+    color: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    font-weight: bold;
+    color: white;
 }
 
 .maindiv {
@@ -52,6 +81,7 @@ body {
 .basketheadline {
     font-weight: bold;
     font-size: 24px;
+    text-align: center;
 }
 
 .baskettext {
@@ -78,6 +108,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    margin-top: 16px;
 }
 
 .counter {
@@ -97,12 +128,12 @@ body {
     border-color: grey;
 }
 
-.bin{
+.bin {
     width: 30px;
     height: 30px;
 }
 
-.singlepricecount{
+.singlepricecount {
     display: flex;
     align-items: center;
 }
@@ -129,6 +160,10 @@ body {
     color: black;
 }
 
+.figuretoless{
+    display: flex;
+}
+
 .toLess {
     text-align: center;
 }
@@ -149,9 +184,34 @@ body {
     border: unset;
 }
 
+.flexbasket {
+    position: fixed;
+    z-index: -1;
+    opacity: -1;
+    background-color: white;
+    top: 64px;
+    bottom: 64px;
+    left: 64px;
+    right: 64px;
+    padding: 16px;
+}
 
+.flexbasketvisible {
+    opacity: 1 !important;
+    z-index: 1 !important;
+    filter: none !important;
+}
 
+.blurdiv {
+    filter: blur(4px);
+}
 
+.closebutton {
+    color: red;
+    background-color: white;
+    border: none;
+    font-size: 17px;
+}
 
 .menudata {
     display: flex;
@@ -292,4 +352,61 @@ body {
     border-radius: 50%;
     border-style: solid;
     border-color: grey;
+}
+
+@media(max-width: 1480px) {
+    .asidebasket {
+        display: none;
+    }
+
+    .restaurantsection {
+        width: 100vw;
+    }
+
+    .indianfood {
+        width: 100vw;
+    }
+
+    .smallbasket {
+        display: block;
+    }
+}
+
+@media(max-width: 700px) {
+    .menuband {
+        display: none;
+    }
+}
+
+@media(max-width: 500px) {
+    .restaurantlogo {
+        display: none;
+    }
+
+    .menucounter {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+
+    }
+
+}
+
+@media(max-width: 400px) {
+    .hearticondiv {
+        display: none;
+    }
+
+    .basketimg {
+        display: none;
+    }
+
+    .pricing {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+
 }

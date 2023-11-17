@@ -15,10 +15,12 @@
 <body>
     <header class="header">
         <img src="img/logo.png" alt="logo">
+        <div onclick="showflexbasket()" id="" class="smallbasket"><img class="smallbasketimg" src="img/basket.png"
+                alt="basket"><span class="smallmenucounter">X</span></div>
     </header>
     <main class="maindiv">
 
-        <section class="restaurantsection">
+        <section id="restaurantsection" class="restaurantsection">
             <figure class="restaurantimgs figuremargin"><img class="indianfood" src="img/indian_food.jpg"
                     alt="indianfood">
                 <img class="restaurantlogo" src="img/restaurant_logo.jpg" alt="restaurantlogo">
@@ -36,7 +38,7 @@
                             <span>(534 Bewertungen)</span>
                         </figure>
                     </div>
-                    <div>
+                    <div class="hearticondiv">
                         <img class="icons" src="img/info.png" alt="info">
                         <img class="icons" src="img/herz.png" alt="heart">
                     </div>
@@ -66,7 +68,7 @@
                 </figure>
             </article>
         </section>
-        <aside class="asidebasket">
+        <aside id="asidebasket" class="asidebasket">
             <figure class="figuremargin">
                 <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
                 <div class="basketplaceholder">
@@ -104,18 +106,65 @@
                     <span>99,99€</span>
                 </div>
             </figure>
-            <figure class="figuremargin">
+            <figure class="figuremargin figuretoless">
                 <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
                 <span class="toLess">Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem
                     Mindestbestellwert von 7€ (exkl. Lieferkosten)</span>
             </figure>
             <div class="buttondiv"><button class="orderbutton">BESTELLEN</button></div>
         </aside>
+        <section id="flexbasket" class="flexbasket">
+            <div class="buttondiv"><button onclick="closebasket()" class="closebutton">Schließen</button></div>
+            <figure class="figuremargin">
+                <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
+                <div class="basketplaceholder">
+                    <div class="basketcontent">
+                        <img class="basketimg" src="img/basket.png" alt="basket">
+                        <span class="basketheadline">Fülle deinen Warenkorb</span>
+                        <span class="baskettext">Füge einige leckere Gerichte aus der <br>Speisekarte hinzu und bestelle
+                            dein Essen.</span>
+                    </div>
+                </div>
+                <div class="menucounter">
+                    <div class="menudata">
+                        <span>5</span>
+                        <span>Tikka Masala</span>
+                    </div>
+                    <div class="counter">
+                        <button class="countbutton">+</button>
+                        <button class="countbutton">-</button>
+                        <span class="singlepricecount">7,99€</span>
+                        <img class="icons bin" src="img/bin.png" alt="bin">
+                    </div>
+                </div>
+            </figure>
+            <figure class="figuremargin pricefigure">
+                <div class="pricing">
+                    <span>Zwischensumme</span>
+                    <span>99,99 €</span>
+                </div>
+                <div class="pricing">
+                    <span>Lieferkosten</span>
+                    <span>7€</span>
+                </div>
+                <div class="pricing wholesum">
+                    <span>Gesamtpreis</span>
+                    <span>99,99€</span>
+                </div>
+            </figure>
+            <figure class="figuremargin figuretoless">
+                <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
+                <span class="toLess">Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem
+                    Mindestbestellwert von 7€ (exkl. Lieferkosten)</span>
+            </figure>
+            <div class="buttondiv"><button class="orderbutton">BESTELLEN</button></div>
+        </section>
 
 
     </main>
 
-    <footer><a href="https://www.flaticon.com/de/kostenlose-icons/entfernen" title="entfernen Icons">Entfernen Icons
+    <footer id="footerid">
+        <a href="https://www.flaticon.com/de/kostenlose-icons/entfernen" title="entfernen Icons">Entfernen Icons
             erstellt von Freepik - Flaticon</a>
         <br>
         <a href="https://www.flaticon.com/de/kostenlose-icons/korbladen" title="korbladen Icons">Korbladen Icons
