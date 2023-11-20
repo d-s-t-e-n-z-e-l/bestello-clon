@@ -3,7 +3,7 @@ let dishes = [
         'dish': 'Gobi Pakora',
         'description': 'Blumenkohl in Kichererbsenmehlteig',
         'price': '4,90',
-        'category': 'Vorspeisen'
+        'category': 'Vorspeisen',
     },
     {
         'dish': 'Panir Pakora',
@@ -27,13 +27,13 @@ let dishes = [
         'dish': 'Gemischter Salat',
         'description': 'Wahl aus: mit Joghurt-Dressing, hausgemacht, mit Kräuter-Dressing oder ohne Dressing',
         'price': '5,90',
-        'category': 'Salat'
+        'category': 'Salate'
     },
     {
         'dish': 'Murgh Salat',
         'description': 'Wahl aus: mit Joghurt-Dressing, hausgemacht, mit Kräuter-Dressing oder ohne Dressing.',
         'price': '7,90',
-        'category': 'Salat'
+        'category': 'Salate'
     },
     {
         'dish': 'Ente Korma',
