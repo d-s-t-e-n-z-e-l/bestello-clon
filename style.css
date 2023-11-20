@@ -306,6 +306,7 @@ body {
 .menucollection {
     margin-left: 22px;
     margin-top: 10px;
+    margin-right: 22px;
 }
 
 .menuheadline {
@@ -334,17 +335,24 @@ body {
     gap: 8px;
 }
 
-.menuoptions {
-    margin-top: 13px;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: space-between;
-    align-items: flex-start;
+.menubox{
     border-style: ridge;
     border-radius: 8px;
     border-width: thin;
     padding: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.menuoptions {
+    margin-top: 13px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    justify-content: center;
+    gap:16px;
 }
 
 .plusbutton {

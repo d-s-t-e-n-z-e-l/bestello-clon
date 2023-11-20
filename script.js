@@ -99,8 +99,8 @@ function renderMenuList() {
     for (let i = 0; i < categories.length; i++) {
         menulist.innerHTML += categoryTemplate(i);
         for (let j = 0; j < dishes.length; j++) {// j durchläuft das ganze json also werte von 0-11
-            let menudiv = document.getElementById('menuoptions${i}')// die existiert 6 mal mit werten 0-1
-            if (categories[i] == dishes[j]['categories']) {
+            let menudiv = document.getElementById(`menuoptions${i}`)// die existiert 6 mal mit werten 0-1
+            if (categories[i] == dishes[j]['category']) {
                 menudiv.innerHTML += menuOptionTemplate(j);
             }
 
@@ -121,15 +121,14 @@ function categoryTemplate(i) {
 
 
 function menuOptionTemplate(j) {
-    return /*html*/`
-    <div class="menuoptions">
+    return /*html*/` <div class="menubox">
                         <div class="menuinfos">
                             <span id="menu${j}" class="menuname">${dishes[j]['dish']}</span>
                             <span class="menu">${dishes[j]['description']}</span>
                             <span id="price${j}" class="menuprice">${dishes[j]['price']} €</span>
                         </div>
                         <button class="plusbutton">+</button>
-                    </div>
+</div>
 
 `
 }
