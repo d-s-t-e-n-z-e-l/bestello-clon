@@ -21,6 +21,22 @@ body {
     justify-content: space-between;
 }
 
+.logodiv{
+    gap: 8px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px;
+}
+
+.companyname{
+    color: white;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+
 .smallbasket {
     display: flex;
     flex-direction: column;

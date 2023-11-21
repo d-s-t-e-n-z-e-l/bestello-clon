@@ -8,13 +8,16 @@
     <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
     <link rel="icon" href="img/icon.webp" type="image/png">
-    <title>Lieferando</title>
+    <title>Bestello</title>
 </head>
 
 
 <body onload="load()">
     <header class="header">
-        <img src="img/logo.png" alt="logo">
+        <div class="logodiv">
+            <img class="spoonlogo" src="img/spoons.png" alt="logo">
+            <span class="companyname">Bestello.de</span>
+        </div>
         <div onclick="showflexbasket()" id="" class="smallbasket"><img class="smallbasketimg" src="img/basket.png"
                 alt="basket"><span class="smallmenucounter">X</span></div>
     </header>
@@ -38,9 +41,8 @@
                             <span>(534 Bewertungen)</span>
                         </figure>
                     </div>
-                    <div class="hearticondiv">
-                        <img class="icons" src="img/info.png" alt="info">
-                        <img class="icons" src="img/herz.png" alt="heart">
+                    <div id="hearticondiv" class="hearticondiv">
+                        <!-- //wird gerendert -->
                     </div>
                 </div>
             </article>
@@ -59,12 +61,12 @@
                     <div class="menuoptions">
                         <div class="menuinfos">
                             Inhalt dieses Containers wird auch gerendert mit einer untergeordneten for Schleife -->
-                            <!-- <span class="menuname">Gerichtname</span>
+                <!-- <span class="menuname">Gerichtname</span>
                             <span class="menu">Beschreibung</span>
                             <span class="menuprice">Preis €</span>
                         </div>
                         <button class="plusbutton">+</button> -->
-                    <!-- </div>
+                <!-- </div>
                 </figure> -->
             </article>
         </section>
@@ -79,7 +81,7 @@
                             dein Essen.</span>
                     </div>
                 </div>
-                <div class="menucounter">
+                <!-- <div class="menucounter">
                     <div class="menudata">
                         <span>5</span>
                         <span>Tikka Masala</span>
@@ -90,7 +92,7 @@
                         <span class="singlepricecount">7,99€</span>
                         <img class="icons bin" src="img/bin.png" alt="bin">
                     </div>
-                </div>
+                </div> -->
             </figure>
             <figure class="figuremargin pricefigure">
                 <div class="pricing">
@@ -181,6 +183,9 @@
         <br>
         <a href="https://www.flaticon.com/de/kostenlose-icons/herz" title="herz Icons">Herz Icons erstellt von Freepik -
             Flaticon</a>
+        <br>
+        <a href="https://www.flaticon.com/de/kostenlose-icons/restaurant" title="restaurant Icons">Restaurant Icons
+            erstellt von Freepik - Flaticon</a>
         <br>
     </footer>
 
