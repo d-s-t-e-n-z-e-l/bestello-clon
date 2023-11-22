@@ -75,11 +75,94 @@ let dishes = [
 
 let categories = ['Vorspeisen', 'Suppen', 'Salate', 'Hauptgerichte', 'Kindergerichte', 'Nachspeisen',]
 
-function load() {
-    renderIcons();
-    renderMenuList();
-    //rendern vom Warenkorb fehlt hier noch
+let basketDishes = [];
+let basketPrices = [];
+
+
+function load(){
+    console.log('load');
+    renderIcons();//Herz rot oder weiß wird angezeigt
+    renderMenuList();//die Speisekarte wird geladen
+    renderBasket();// der Warenkorb, sofern was drin, wird geladen
+    renderPricing();// Die Preisrechnung , sofern was drin, wird geladen
 }
+
+
+function renderBasket() {
+    let basket = document.getElementById('basketcontent');
+    if (basketDishes.length > 0) {
+        renderBasketLines(basket);
+    }
+}
+
+
+function renderBasketLines(basket) {
+    let lines = document.getElementById('menucounter');
+    lines.innerHTML = '';
+    for (let i = 0; i < basketDishes.length; i++) {
+        const currentDish = basketDishes[i];
+        lines.innerHTML = basketLine(currentDish);
+    }
+    
+}
+
+
+function basketLine() {
+    return /*html*/`
+        <div class="menucounter">
+                    <div class="menudata">
+                        <span>5</span>
+                        <span>${currentDish}</span>
+                    </div>
+                    <div class="counter">
+                        <button class="countbutton">+</button>
+                        <button class="countbutton">-</button>
+                        <span class="singlepricecount">7,99€</span>
+                        <img class="icons bin" src="img/bin.png" alt="bin">
+                    </div>
+                </div>
+    `
+}
+
+
+function renderPricing(netto, brutto){
+    let pricing = document.getElementById('pricingfigure');
+    if (basketDishes.length > 0) {
+        pricing.innerHTML = pricingTemplate(netto, brutto);
+    }
+}
+
+
+function pricingTemplate(netto,brutto){
+   return /*html*/`
+    <div id="">
+                    <div class="pricing">
+                        <span>Zwischensumme</span>
+                        <span>${netto} €</span>
+                    </div>
+                    <div class="pricing">
+                        <span>Lieferkosten</span>
+                        <span>7€</span>
+                    </div>
+                    <div class="pricing wholesum">
+                        <span>Gesamtpreis</span>
+                        <span>${brutto} €</span>
+                    </div>
+                </div>
+   `
+}
+
+
+function AddToBasket(){
+    removePlaceholder();
+}
+
+
+function removePlaceholder() {
+    document.getElementById('placeholder').classList.add('d-none');
+    document.getElementById('pricingplaceholder').classList.add('d-none');
+}
+
 
 function renderMenuList() {
     let menulist = document.getElementById('menulist');
@@ -119,29 +202,6 @@ function menuOptionTemplate(j) {
 </div>
 
 `
-}
-
-
-function renderBasket() {
-
-}
-
-
-function basketLine() {
-    return /*html*/`
-        <div class="menucounter">
-                    <div class="menudata">
-                        <span>5</span>
-                        <span>Tikka Masala</span>
-                    </div>
-                    <div class="counter">
-                        <button class="countbutton">+</button>
-                        <button class="countbutton">-</button>
-                        <span class="singlepricecount">7,99€</span>
-                        <img class="icons bin" src="img/bin.png" alt="bin">
-                    </div>
-                </div>
-    `
 }
 
 

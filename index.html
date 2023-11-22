@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="fonts.css">
     <script src="script.js"></script>
-    <link rel="icon" href="img/icon.webp" type="image/png">
+    <link rel="icon" href="img/spoons.png" type="image/png">
     <title>Bestello</title>
 </head>
 
@@ -18,8 +18,9 @@
             <img class="spoonlogo" src="img/spoons.png" alt="logo">
             <span class="companyname">Bestello.de</span>
         </div>
-        <div onclick="showflexbasket()" id="" class="smallbasket"><img class="smallbasketimg" src="img/basket.png"
-                alt="basket"><span class="smallmenucounter">X</span></div>
+        <div onclick="showflexbasket()" id="" class="smallbasket">
+            <img class="smallbasketimg" src="img/basket.png" alt="basket"><span class="smallmenucounter">X</span>
+        </div>
     </header>
     <main class="maindiv">
 
@@ -71,9 +72,9 @@
             </article>
         </section>
         <aside id="asidebasket" class="asidebasket">
-            <figure class="figuremargin">
+            <figure id="basketcontent" class="figuremargin">
                 <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
-                <div class="basketplaceholder">
+                <div id="placeholder" class="basketplaceholder">
                     <div class="basketcontent">
                         <img class="basketimg" src="img/basket.png" alt="basket">
                         <span class="basketheadline">Fülle deinen Warenkorb</span>
@@ -95,17 +96,20 @@
                 </div> -->
             </figure>
             <figure class="figuremargin pricefigure">
-                <div class="pricing">
-                    <span>Zwischensumme</span>
-                    <span>99,99 €</span>
-                </div>
-                <div class="pricing">
-                    <span>Lieferkosten</span>
-                    <span>7€</span>
-                </div>
-                <div class="pricing wholesum">
-                    <span>Gesamtpreis</span>
-                    <span>99,99€</span>
+                <!-- pricing wird heir rein gerendert -->
+                <div id="pricingplaceholder">
+                    <div class="pricing">
+                        <span>Zwischensumme</span>
+                        <span>0 €</span>
+                    </div>
+                    <div class="pricing">
+                        <span>Lieferkosten</span>
+                        <span>7 €</span>
+                    </div>
+                    <div class="pricing wholesum">
+                        <span>Gesamtpreis</span>
+                        <span>0 €</span>
+                    </div>
                 </div>
             </figure>
             <figure class="figuremargin figuretoless">
@@ -117,9 +121,9 @@
         </aside>
         <section id="flexbasket" class="flexbasket">
             <div class="buttondiv"><button onclick="closebasket()" class="closebutton">Schließen</button></div>
-            <figure class="figuremargin">
+            <figure id="basketcontent" class="figuremargin">
                 <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
-                <div class="basketplaceholder">
+                <div id="placeholder" class="basketplaceholder">
                     <div class="basketcontent">
                         <img class="basketimg" src="img/basket.png" alt="basket">
                         <span class="basketheadline">Fülle deinen Warenkorb</span>
@@ -127,31 +131,22 @@
                             dein Essen.</span>
                     </div>
                 </div>
-                <div class="menucounter">
-                    <div class="menudata">
-                        <span>5</span>
-                        <span>Tikka Masala</span>
-                    </div>
-                    <div class="counter">
-                        <button class="countbutton">+</button>
-                        <button class="countbutton">-</button>
-                        <span class="singlepricecount">7,99€</span>
-                        <img class="icons bin" src="img/bin.png" alt="bin">
-                    </div>
-                </div>
             </figure>
-            <figure class="figuremargin pricefigure">
-                <div class="pricing">
-                    <span>Zwischensumme</span>
-                    <span>99,99 €</span>
-                </div>
-                <div class="pricing">
-                    <span>Lieferkosten</span>
-                    <span>7€</span>
-                </div>
-                <div class="pricing wholesum">
-                    <span>Gesamtpreis</span>
-                    <span>99,99€</span>
+            <figure id="pricingfigure" class="figuremargin pricefigure">
+                <!-- pricing wird heir rein gerendert -->
+                <div id="pricingplaceholder">
+                    <div class="pricing">
+                        <span>Zwischensumme</span>
+                        <span>0 €</span>
+                    </div>
+                    <div class="pricing">
+                        <span>Lieferkosten</span>
+                        <span>7 €</span>
+                    </div>
+                    <div class="pricing wholesum">
+                        <span>Gesamtpreis</span>
+                        <span>0 €</span>
+                    </div>
                 </div>
             </figure>
             <figure class="figuremargin figuretoless">

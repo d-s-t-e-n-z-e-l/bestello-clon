@@ -10,6 +10,9 @@ body {
     font-family: 'Raleway';
 }
 
+.d-none{
+    display: none;
+}
 
 .header {
     background-color: #F86600;
@@ -34,8 +37,6 @@ body {
     font-size: 25px;
     font-weight: bold;
 }
-
-
 
 .smallbasket {
     display: flex;
@@ -83,6 +84,7 @@ body {
     display: flex;
     flex-direction: column;
     margin-right: 8px;
+    
 }
 
 .basketcontent {
@@ -159,6 +161,7 @@ body {
     display: flex;
     flex-direction: column;
     gap: 8px;
+    padding: 8px;
 }
 
 .pricing {
@@ -177,6 +180,7 @@ body {
 
 .figuretoless{
     display: flex;
+    justify-content: center;
 }
 
 .toLess {
@@ -226,6 +230,7 @@ body {
     background-color: white;
     border: none;
     font-size: 17px;
+    cursor: pointer;
 }
 
 .menudata {
