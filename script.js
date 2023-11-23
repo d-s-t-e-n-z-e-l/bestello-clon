@@ -77,10 +77,9 @@ let categories = ['Vorspeisen', 'Suppen', 'Salate', 'Hauptgerichte', 'Kindergeri
 
 let basketDishes = [];
 let basketPrices = [];
+let amounts = [];
 
-
-function load(){
-    console.log('load');
+function load() {
     renderIcons();//Herz rot oder weiß wird angezeigt
     renderMenuList();//die Speisekarte wird geladen
     renderBasket();// der Warenkorb, sofern was drin, wird geladen
@@ -98,16 +97,17 @@ function renderBasket() {
 
 function renderBasketLines(basket) {
     let lines = document.getElementById('menucounter');
-    lines.innerHTML = '';
+    // lines.innerHTML = '';
     for (let i = 0; i < basketDishes.length; i++) {
         const currentDish = basketDishes[i];
-        lines.innerHTML = basketLine(currentDish);
+        const currentPrice = basketPrices[i];
+        lines.innerHTML = basketLine(currentDish, currentPrice);
     }
-    
+
 }
 
 
-function basketLine() {
+function basketLine(currentDish, currentPrice) {
     return /*html*/`
         <div class="menucounter">
                     <div class="menudata">
@@ -117,7 +117,7 @@ function basketLine() {
                     <div class="counter">
                         <button class="countbutton">+</button>
                         <button class="countbutton">-</button>
-                        <span class="singlepricecount">7,99€</span>
+                        <span class="singlepricecount">${currentPrice}</span>
                         <img class="icons bin" src="img/bin.png" alt="bin">
                     </div>
                 </div>
@@ -125,7 +125,7 @@ function basketLine() {
 }
 
 
-function renderPricing(netto, brutto){
+function renderPricing(netto, brutto) {
     let pricing = document.getElementById('pricingfigure');
     if (basketDishes.length > 0) {
         pricing.innerHTML = pricingTemplate(netto, brutto);
@@ -133,8 +133,8 @@ function renderPricing(netto, brutto){
 }
 
 
-function pricingTemplate(netto,brutto){
-   return /*html*/`
+function pricingTemplate(netto, brutto) {
+    return /*html*/`
     <div id="">
                     <div class="pricing">
                         <span>Zwischensumme</span>
@@ -142,7 +142,7 @@ function pricingTemplate(netto,brutto){
                     </div>
                     <div class="pricing">
                         <span>Lieferkosten</span>
-                        <span>7€</span>
+                        <span>7 €</span>
                     </div>
                     <div class="pricing wholesum">
                         <span>Gesamtpreis</span>
@@ -153,12 +153,49 @@ function pricingTemplate(netto,brutto){
 }
 
 
-function AddToBasket(){
+function AddToBasket(index) {
+    console.log('add');
     removePlaceholder();
+    let newDish = getDishValue(index);
+    let newPrice = getPriceValue(index);
+    let currentIndex = getDishIndex(newDish);
+
+    if (currentIndex === -1) {// Bedingung: wenn der index vergeben ist, ist index immer positiv, ist er also negativ, dann gibt es ihn nicht
+        basketDishes.push(newDish);
+        basketPrices.push(newPrice);
+        amounts.push(1);
+    }
+    else {
+        amounts[currentIndex] += 1
+    }
+    load();
+
+}
+
+
+function getValues(divID) {
+    let inputValue = document.getElementById(divID).innerHTML;
+    return inputValue;
+}
+
+function getDishValue(currentIndex) {
+    let choosenDish = getValues(`menu${currentIndex}`);
+    return choosenDish;
+}
+
+function getPriceValue(currentIndex) {
+    let choosenPrice = getValues(`price${currentIndex}`);
+    return choosenPrice;
+}
+
+
+function getDishIndex(newDish) {
+    return basketDishes.indexOf(newDish);
 }
 
 
 function removePlaceholder() {
+    console.log('remove');
     document.getElementById('placeholder').classList.add('d-none');
     document.getElementById('pricingplaceholder').classList.add('d-none');
 }
@@ -198,7 +235,7 @@ function menuOptionTemplate(j) {
                             <span class="menu">${dishes[j]['description']}</span>
                             <span id="price${j}" class="menuprice">${dishes[j]['price']} €</span>
                         </div>
-                        <button class="plusbutton">+</button>
+                        <button onclick="AddToBasket(${j})" class="plusbutton">+</button>
 </div>
 
 `
@@ -249,15 +286,22 @@ function getArray(key) {
 
 
 function showflexbasket() {
-    document.getElementById('flexbasket').classList.add('flexbasketvisible');
     document.getElementById('restaurantsection').classList.add('blurdiv');
-    document.getElementById('asidebasket').classList.add('blurdiv');
+    document.getElementById('asidebasket').classList.add('d-flex');
     document.getElementById('footerid').classList.add('blurdiv');
 }
 
 function closebasket() {
-    document.getElementById('flexbasket').classList.remove('flexbasketvisible');
     document.getElementById('restaurantsection').classList.remove('blurdiv');
-    document.getElementById('asidebasket').classList.remove('blurdiv');
+    document.getElementById('asidebasket').classList.remove('d-flex');
     document.getElementById('footerid').classList.remove('blurdiv');
 }
+
+function flexbasketresponsive(){
+    screenWidth = window.innerWidth;
+    if(screenWidth > 1570){
+        closebasket()
+    }
+}
+
+setInterval(flexbasketresponsive,100);

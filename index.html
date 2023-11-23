@@ -72,6 +72,7 @@
             </article>
         </section>
         <aside id="asidebasket" class="asidebasket">
+            <div class="buttondiv"><button onclick="closebasket()" class="closebutton">Schließen</button></div>
             <figure id="basketcontent" class="figuremargin">
                 <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
                 <div id="placeholder" class="basketplaceholder">
@@ -82,18 +83,8 @@
                             dein Essen.</span>
                     </div>
                 </div>
-                <!-- <div class="menucounter">
-                    <div class="menudata">
-                        <span>5</span>
-                        <span>Tikka Masala</span>
-                    </div>
-                    <div class="counter">
-                        <button class="countbutton">+</button>
-                        <button class="countbutton">-</button>
-                        <span class="singlepricecount">7,99€</span>
-                        <img class="icons bin" src="img/bin.png" alt="bin">
-                    </div>
-                </div> -->
+                <div id="menucounter"><!-- basketlines werden hier reingerendert --></div>
+                
             </figure>
             <figure class="figuremargin pricefigure">
                 <!-- pricing wird heir rein gerendert -->
@@ -119,45 +110,6 @@
             </figure>
             <div class="buttondiv"><button class="orderbutton">BESTELLEN</button></div>
         </aside>
-        <section id="flexbasket" class="flexbasket">
-            <div class="buttondiv"><button onclick="closebasket()" class="closebutton">Schließen</button></div>
-            <figure id="basketcontent" class="figuremargin">
-                <!-- divs liegen übereinander, beim leeren warennkorb ist oberer div zu seehen, danach dnone -->
-                <div id="placeholder" class="basketplaceholder">
-                    <div class="basketcontent">
-                        <img class="basketimg" src="img/basket.png" alt="basket">
-                        <span class="basketheadline">Fülle deinen Warenkorb</span>
-                        <span class="baskettext">Füge einige leckere Gerichte aus der <br>Speisekarte hinzu und bestelle
-                            dein Essen.</span>
-                    </div>
-                </div>
-            </figure>
-            <figure id="pricingfigure" class="figuremargin pricefigure">
-                <!-- pricing wird heir rein gerendert -->
-                <div id="pricingplaceholder">
-                    <div class="pricing">
-                        <span>Zwischensumme</span>
-                        <span>0 €</span>
-                    </div>
-                    <div class="pricing">
-                        <span>Lieferkosten</span>
-                        <span>7 €</span>
-                    </div>
-                    <div class="pricing wholesum">
-                        <span>Gesamtpreis</span>
-                        <span>0 €</span>
-                    </div>
-                </div>
-            </figure>
-            <figure class="figuremargin figuretoless">
-                <!-- figure wird nach erreichen MBD ausgeblendet Dnone -->
-                <span class="toLess">Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem
-                    Mindestbestellwert von 7€ (exkl. Lieferkosten)</span>
-            </figure>
-            <div class="buttondiv"><button class="orderbutton">BESTELLEN</button></div>
-        </section>
-
-
     </main>
 
     <footer id="footerid">

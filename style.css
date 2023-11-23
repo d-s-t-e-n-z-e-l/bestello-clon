@@ -10,8 +10,12 @@ body {
     font-family: 'Raleway';
 }
 
-.d-none{
+.d-none {
     display: none;
+}
+
+.d-flex {
+    display: flex !important;
 }
 
 .header {
@@ -24,7 +28,7 @@ body {
     justify-content: space-between;
 }
 
-.logodiv{
+.logodiv {
     gap: 8px;
     display: flex;
     flex-direction: row;
@@ -32,7 +36,7 @@ body {
     padding: 16px;
 }
 
-.companyname{
+.companyname {
     color: white;
     font-size: 25px;
     font-weight: bold;
@@ -75,7 +79,7 @@ body {
 }
 
 .asidebasket {
-    width: 24vw;
+    width: 380px;
     position: fixed;
     top: 64px;
     right: 0px;
@@ -84,8 +88,9 @@ body {
     display: flex;
     flex-direction: column;
     margin-right: 8px;
-    
+
 }
+
 
 .basketcontent {
     display: flex;
@@ -178,7 +183,7 @@ body {
     color: black;
 }
 
-.figuretoless{
+.figuretoless {
     display: flex;
     justify-content: center;
 }
@@ -319,7 +324,7 @@ body {
     font-weight: bold;
 }
 
-.menulink:hover{
+.menulink:hover {
     cursor: pointer;
     color: #F86600;
 }
@@ -356,7 +361,7 @@ body {
     gap: 8px;
 }
 
-.menubox{
+.menubox {
     border-style: ridge;
     border-radius: 8px;
     border-width: thin;
@@ -373,7 +378,7 @@ body {
     flex-direction: column;
     padding: 8px;
     justify-content: center;
-    gap:16px;
+    gap: 16px;
 }
 
 .plusbutton {
@@ -387,9 +392,22 @@ body {
     border-color: grey;
 }
 
-@media(max-width: 1480px) {
-    .asidebasket {
+@media(min-width:1570px) {
+    .buttondiv {
         display: none;
+    }
+}
+
+@media(max-width: 1570px) {
+    .asidebasket {
+        position: fixed;
+        background-color: white;
+        padding: 16px;
+        display: none;
+        width: 50vw;
+        height: 80vh;
+        top: unset;
+        right: unset;
     }
 
     .restaurantsection {
@@ -402,6 +420,11 @@ body {
 
     .smallbasket {
         display: block;
+    }
+
+    .maindiv {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
@@ -439,6 +462,10 @@ body {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    .asidenbasket {
+        width: 200px;
     }
 
 
