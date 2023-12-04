@@ -406,7 +406,7 @@ body {
         display: none;
         width: 50vw;
         height: 80vh;
-        top: unset;
+        top: 64px;
         right: unset;
     }
 
