@@ -12,7 +12,7 @@ let dishes = [
         'category': 'Vorspeisen',
     },
     {
-        'dish': 'Sacmpi Coco',
+        'dish': 'Scampi Coco',
         'description': 'Großgarnelensuppe mit Kokosmilch, Limettenblättern und Zitronengras',
         'price': '5,90',
         'category': 'Suppen',
@@ -97,22 +97,22 @@ function renderBasket() {
 
 function renderBasketLines(basket) {
     let lines = document.getElementById('menucounter');
-    // lines.innerHTML = '';
     for (let i = 0; i < basketDishes.length; i++) {
         const currentDish = basketDishes[i];
         const currentPrice = basketPrices[i];
-        lines.innerHTML = basketLine(currentDish, currentPrice);
+        const amount = amounts[i];
+        lines.innerHTML = basketLine(currentDish, currentPrice, amount);
     }
 
 }
 
 
-function basketLine(currentDish, currentPrice) {
+function basketLine(currentDish, currentPrice, amount) {
     return /*html*/`
         <div class="menucounter">
                     <div class="menudata">
-                        <span>5</span>
-                        <span>${currentDish}</span>
+                        <p>${amount}</p>
+                        <p>${currentDish}</p>
                     </div>
                     <div class="counter">
                         <button class="countbutton">+</button>
@@ -125,11 +125,25 @@ function basketLine(currentDish, currentPrice) {
 }
 
 
-function renderPricing(netto, brutto) {
-    let pricing = document.getElementById('pricingfigure');
+function renderPricing() {
+    let pricing = document.getElementById('pricefigure');
     if (basketDishes.length > 0) {
+        let netto = calculateNetto();
+        let brutto = calculateBrutto(netto);
         pricing.innerHTML = pricingTemplate(netto, brutto);
     }
+}
+
+function calculateNetto() {
+    let sum = 0;
+    for (let i = 0; i < basketPrices.length; i++) {
+        sum += basketPrices[i];
+    }
+    return sum;
+}
+
+function calculateBrutto(netto) {
+    return netto + 7;
 }
 
 
@@ -155,7 +169,7 @@ function pricingTemplate(netto, brutto) {
 
 function AddToBasket(index) {
     console.log('add');
-    removePlaceholder();
+    // removePlaceholder();
     let newDish = getDishValue(index);
     let newPrice = getPriceValue(index);
     let currentIndex = getDishIndex(newDish);
@@ -163,10 +177,10 @@ function AddToBasket(index) {
     if (currentIndex === -1) {// Bedingung: wenn der index vergeben ist, ist index immer positiv, ist er also negativ, dann gibt es ihn nicht
         basketDishes.push(newDish);
         basketPrices.push(newPrice);
-        amounts.push(1);
+        amounts.push(1);// Als menge wird immer 1 in das amount-array geschoben
     }
     else {
-        amounts[currentIndex] += 1
+        amounts[currentIndex] += 1// gibt es das dish schon wird der entsprechende wert im amountarray um 1 erhöht
     }
     load();
 
@@ -180,7 +194,7 @@ function getValues(divID) {
 
 function getDishValue(currentIndex) {
     let choosenDish = getValues(`menu${currentIndex}`);
-    return choosenDish;
+    return choosenDish.trim();
 }
 
 function getPriceValue(currentIndex) {
@@ -194,11 +208,14 @@ function getDishIndex(newDish) {
 }
 
 
-function removePlaceholder() {
-    console.log('remove');
-    document.getElementById('placeholder').classList.add('d-none');
-    document.getElementById('pricingplaceholder').classList.add('d-none');
-}
+// function removePlaceholder() {
+//     console.log('remove');
+//     if (basketDishes.length>1) {
+//         document.getElementById('placeholder').classList.add('d-none');
+//         document.getElementById('pricingplaceholder').classList.add('d-none');
+//     }
+
+// }
 
 
 function renderMenuList() {
@@ -297,11 +314,11 @@ function closebasket() {
     document.getElementById('footerid').classList.remove('blurdiv');
 }
 
-function flexbasketresponsive(){
+function flexbasketresponsive() {
     screenWidth = window.innerWidth;
-    if(screenWidth > 1570){
+    if (screenWidth > 1570) {
         closebasket()
     }
 }
 
-setInterval(flexbasketresponsive,100);
+setInterval(flexbasketresponsive, 100);
