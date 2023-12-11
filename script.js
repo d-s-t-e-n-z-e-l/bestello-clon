@@ -88,6 +88,7 @@ function load() {
 
 
 function renderBasket() {
+    removePlaceholder();
     let basket = document.getElementById('basketcontent');
     if (basketDishes.length > 0) {
         renderBasketLines(basket);
@@ -169,7 +170,6 @@ function pricingTemplate(netto, brutto) {
 
 function AddToBasket(index) {
     console.log('add');
-    // removePlaceholder();
     let newDish = getDishValue(index);
     let newPrice = getPriceValue(index);
     let currentIndex = getDishIndex(newDish);
@@ -208,14 +208,14 @@ function getDishIndex(newDish) {
 }
 
 
-// function removePlaceholder() {
-//     console.log('remove');
-//     if (basketDishes.length>1) {
-//         document.getElementById('placeholder').classList.add('d-none');
-//         document.getElementById('pricingplaceholder').classList.add('d-none');
-//     }
-
-// }
+function removePlaceholder() {
+    console.log('remove');
+    if (basketDishes.length > 1) {
+        console.log('condition fulfilled');
+        document.getElementById('placeholder').classList.add('d-none');
+        document.getElementById('pricingplaceholder').classList.add('d-none');
+    }
+}
 
 
 function renderMenuList() {
@@ -306,12 +306,14 @@ function showflexbasket() {
     document.getElementById('restaurantsection').classList.add('blurdiv');
     document.getElementById('asidebasket').classList.add('d-flex');
     document.getElementById('footerid').classList.add('blurdiv');
+    document.getElementById('header').classList.add('blurdiv');
 }
 
 function closebasket() {
     document.getElementById('restaurantsection').classList.remove('blurdiv');
     document.getElementById('asidebasket').classList.remove('d-flex');
     document.getElementById('footerid').classList.remove('blurdiv');
+    document.getElementById('header').classList.remove('blurdiv');
 }
 
 function flexbasketresponsive() {
