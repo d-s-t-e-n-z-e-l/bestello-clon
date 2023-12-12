@@ -78,26 +78,32 @@ let categories = ['Vorspeisen', 'Suppen', 'Salate', 'Hauptgerichte', 'Kindergeri
 let basketDishes = [];
 let basketPrices = [];
 let amounts = [];
+let cumulatetPrices = []
 
 function load() {
+    updateArrays();
     renderIcons();//Herz rot oder weiß wird angezeigt
     renderMenuList();//die Speisekarte wird geladen
-    updateArrays();
     renderBasket();// der Warenkorb, sofern was drin, wird geladen
     renderPricing();// Die Preisrechnung , sofern was drin, wird geladen
 }
 
-function updateArrays(){
+function updateArrays() {
     if (localStorage.getItem('savedDishes')) {// wenn etwas i locstor existiert, dann lese diese werte für das alle arrays aus
         basketDishes = getArray('savedDishes');
         basketPrices = getArray('savedPrices');
         amounts = getArray('savedAmounts');
-      }// alle drei Arrays haben nun die Werte aus dem local storage und sind bereit zum rendern
+    }// alle drei Arrays haben nun die Werte aus dem local storage und sind bereit zum rendern
 }
 
 function renderBasket() {
-    removePlaceholder();
-    if (basketDishes.length > 0) {
+    if (basketDishes.length <= 0) {
+        addPlaceholder();
+        let lines = document.getElementById('menucounter');
+        lines.innerHTML = '';
+    }
+    else {
+        removePlaceholder();
         renderBasketLines();
     }
 }
@@ -108,15 +114,16 @@ function renderBasketLines() {
     lines.innerHTML = '';
     for (let i = 0; i < basketDishes.length; i++) {
         const currentDish = basketDishes[i];
-        const currentPrice = basketPrices[i];
+        const currentPrice = (basketPrices[i] * amounts[i]).toFixed(2);
         const currentamount = amounts[i];
-        lines.innerHTML += basketLine(currentDish, currentPrice, currentamount);
+        lines.innerHTML += basketLine(currentDish, currentPrice, currentamount, i);
+        cumulatetPrices.push(currentPrice);// Summen der Gerichte werden in ein array gepusht
     }
-
+    saveArray('savedcumulation', cumulatetPrices);// werte des summenarrays werden gespeichert
 }
 
 
-function basketLine(currentDish, currentPrice, currentamount) {
+function basketLine(currentDish, currentPrice, currentamount, i) {
     return /*html*/`
         <div class="menucounter">
                     <div class="menudata">
@@ -124,10 +131,10 @@ function basketLine(currentDish, currentPrice, currentamount) {
                         <p>${currentDish}</p>
                     </div>
                     <div class="counter">
-                        <button class="countbutton">+</button>
-                        <button class="countbutton">-</button>
-                        <span class="singlepricecount">${currentPrice}</span>
-                        <img class="icons bin" src="img/bin.png" alt="bin">
+                        <button class="countbutton" onclick="raiseAmount(${i})">+</button>
+                        <button class="countbutton" onclick="decreaseAmount(${i})">-</button>
+                        <span class="singlepricecount">${currentPrice} €</span>
+                        <button onclick="deleteDish(${i})" class="deletebutton"><img class="icons bin" src="img/bin.png" alt="bin"></button>
                     </div>
                 </div>
     `
@@ -144,15 +151,16 @@ function renderPricing() {
 }
 
 function calculateNetto() {
-    let sum = 0;
-    for (let i = 0; i < basketPrices.length; i++) {
-        sum += basketPrices[i];
-    }
-    return sum;
+    cumulatetPrices = getArray('savedcumulation');//packt aus locstor die werte ins array cumulatedPrices
+    let linenettoprices = cumulatetPrices.map(item => parseFloat(item) || 0);// wandelt alle arraywerte in zahlen um 
+    let summe = linenettoprices.reduce((acc, val) => acc + val, 0);//summiert alle werte des arrays zu einem wert auf
+    // netto = summe.slice(0, -1);
+    return (summe).toFixed(2); // gibt den wert wieder
 }
 
 function calculateBrutto(netto) {
-    return netto + 7;
+    let brutto = netto + 7 ;
+    return (brutto).toFixed(2);
 }
 
 
@@ -177,7 +185,6 @@ function pricingTemplate(netto, brutto) {
 
 
 function AddToBasket(index) {
-    console.log('add');
     let newDish = getDishValue(index);
     let newPrice = getPriceValue(index);
     let currentIndex = getDishIndex(newDish);
@@ -185,15 +192,39 @@ function AddToBasket(index) {
     if (currentIndex === -1) {// Bedingung: wenn der index vergeben ist, ist index immer positiv, ist er also negativ, dann gibt es ihn nicht
         basketDishes.push(newDish);
         basketPrices.push(newPrice);
-        amounts.push('1');// Als menge wird immer 1 in das amount-array geschoben
+        amounts.push(1);// Als menge wird immer 1 in das amount-array geschoben
     }
     else {
         amounts[currentIndex] += 1// gibt es das dish schon wird der entsprechende wert im amountarray um 1 erhöht
     }
+    save();
     load();
-    saveArray('savedDishes', basketDishes);
-    saveArray('savedPrices', basketPrices);
-    saveArray('saveAmounts', amounts);
+}
+
+function raiseAmount(i) {
+    amounts[i] += 1;
+    saveArray('savedAmounts', amounts);
+    load();
+}
+
+function decreaseAmount(i) {
+    if (amounts[i] <= 1) {
+        deleteDish(i);
+    } else {
+        amounts[i] -= 1;
+        saveArray('savedAmounts', amounts);
+        load();
+    }
+
+}
+
+function deleteDish(i) {
+    console.log('delete')
+    basketDishes.splice(i, 1);
+    basketPrices.splice(i, 1);
+    amounts.splice(i, 1);
+    save();
+    load();
 }
 
 
@@ -211,7 +242,9 @@ function getDishValue(currentIndex) {
 
 function getPriceValue(currentIndex) {
     let choosenPrice = getValues(`price${currentIndex}`);
-    return choosenPrice;
+    deziPrice = choosenPrice.replace(",", ".");// ersetzt die , mit Punkten da js nur mit punkten rechnen kann
+    calcPrice = deziPrice.slice(0, -1);//nimmt die letzte stelle des wertes weg ( das euro zeichen)
+    return parseFloat(+calcPrice).toFixed(2);//gibt eine zahl als dezimalzahl mit 2 kommastellen wieder
 }
 
 
@@ -224,6 +257,10 @@ function removePlaceholder() {
     if (basketDishes.length >= 1) {
         document.getElementById('placeholder').classList.add('d-none');
     }
+}
+
+function addPlaceholder() {
+    document.getElementById('placeholder').classList.remove('d-none');
 }
 
 
@@ -300,6 +337,11 @@ function like() {
     }
 }
 
+function save() {
+    saveArray('savedDishes', basketDishes);
+    saveArray('savedPrices', basketPrices);
+    saveArray('savedAmounts', amounts);
+}
 
 function saveArray(key, array) {
     localStorage.setItem(key, JSON.stringify(array));

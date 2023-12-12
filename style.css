@@ -151,6 +151,11 @@ body {
     border-color: grey;
 }
 
+.deletebutton{
+    background-color: white;
+    border: unset;
+}
+
 .bin {
     width: 30px;
     height: 30px;
@@ -159,6 +164,7 @@ body {
 .singlepricecount {
     display: flex;
     align-items: center;
+    width: 65px;
 }
 
 .pricefigure {
@@ -302,6 +308,7 @@ body {
     justify-content: flex-start;
     align-items: flex-start;
     gap: 6px;
+    flex-direction: column;
 }
 
 .stars {
