@@ -82,37 +82,45 @@ let amounts = [];
 function load() {
     renderIcons();//Herz rot oder weiß wird angezeigt
     renderMenuList();//die Speisekarte wird geladen
+    updateArrays();
     renderBasket();// der Warenkorb, sofern was drin, wird geladen
     renderPricing();// Die Preisrechnung , sofern was drin, wird geladen
 }
 
+function updateArrays(){
+    if (localStorage.getItem('savedDishes')) {// wenn etwas i locstor existiert, dann lese diese werte für das alle arrays aus
+        basketDishes = getArray('savedDishes');
+        basketPrices = getArray('savedPrices');
+        amounts = getArray('savedAmounts');
+      }// alle drei Arrays haben nun die Werte aus dem local storage und sind bereit zum rendern
+}
 
 function renderBasket() {
     removePlaceholder();
-    let basket = document.getElementById('basketcontent');
     if (basketDishes.length > 0) {
-        renderBasketLines(basket);
+        renderBasketLines();
     }
 }
 
 
-function renderBasketLines(basket) {
+function renderBasketLines() {
     let lines = document.getElementById('menucounter');
+    lines.innerHTML = '';
     for (let i = 0; i < basketDishes.length; i++) {
         const currentDish = basketDishes[i];
         const currentPrice = basketPrices[i];
-        const amount = amounts[i];
-        lines.innerHTML = basketLine(currentDish, currentPrice, amount);
+        const currentamount = amounts[i];
+        lines.innerHTML += basketLine(currentDish, currentPrice, currentamount);
     }
 
 }
 
 
-function basketLine(currentDish, currentPrice, amount) {
+function basketLine(currentDish, currentPrice, currentamount) {
     return /*html*/`
         <div class="menucounter">
                     <div class="menudata">
-                        <p>${amount}</p>
+                        <p>${currentamount}</p>
                         <p>${currentDish}</p>
                     </div>
                     <div class="counter">
@@ -177,14 +185,18 @@ function AddToBasket(index) {
     if (currentIndex === -1) {// Bedingung: wenn der index vergeben ist, ist index immer positiv, ist er also negativ, dann gibt es ihn nicht
         basketDishes.push(newDish);
         basketPrices.push(newPrice);
-        amounts.push(1);// Als menge wird immer 1 in das amount-array geschoben
+        amounts.push('1');// Als menge wird immer 1 in das amount-array geschoben
     }
     else {
         amounts[currentIndex] += 1// gibt es das dish schon wird der entsprechende wert im amountarray um 1 erhöht
     }
     load();
-
+    saveArray('savedDishes', basketDishes);
+    saveArray('savedPrices', basketPrices);
+    saveArray('saveAmounts', amounts);
 }
+
+
 
 
 function getValues(divID) {
@@ -209,11 +221,8 @@ function getDishIndex(newDish) {
 
 
 function removePlaceholder() {
-    console.log('remove');
-    if (basketDishes.length > 1) {
-        console.log('condition fulfilled');
+    if (basketDishes.length >= 1) {
         document.getElementById('placeholder').classList.add('d-none');
-        document.getElementById('pricingplaceholder').classList.add('d-none');
     }
 }
 
