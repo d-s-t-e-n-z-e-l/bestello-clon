@@ -131,10 +131,14 @@ function basketLine(currentDish, currentPrice, currentamount, i) {
                         <p>${currentDish}</p>
                     </div>
                     <div class="counter">
+                        <div class="countline">
                         <button class="countbutton" onclick="raiseAmount(${i})">+</button>
                         <button class="countbutton" onclick="decreaseAmount(${i})">-</button>
                         <span class="singlepricecount">${currentPrice} €</span>
+                        </div>
+                        <div>
                         <button onclick="deleteDish(${i})" class="deletebutton"><img class="icons bin" src="img/bin.png" alt="bin"></button>
+                        </div>
                     </div>
                 </div>
     `
@@ -159,7 +163,7 @@ function calculateNetto() {
 }
 
 function calculateBrutto(netto) {
-    let brutto = netto + 7 ;
+    let brutto = netto + 7;
     return (brutto).toFixed(2);
 }
 

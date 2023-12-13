@@ -87,7 +87,8 @@ body {
     background-color: white;
     display: flex;
     flex-direction: column;
-    margin-right: 8px;
+    padding-right: 24px;
+    height: 80vh;
 
 }
 
@@ -137,6 +138,7 @@ body {
 .counter {
     display: flex;
     gap: 14px;
+    
 
 }
 
@@ -151,7 +153,12 @@ body {
     border-color: grey;
 }
 
-.deletebutton{
+.countline {
+    display: flex;
+    width: 150px;
+}
+
+.deletebutton {
     background-color: white;
     border: unset;
 }
@@ -477,5 +484,8 @@ body {
         width: 200px;
     }
 
+    .counter {
+        flex-direction: column;
+    }
 
 }
