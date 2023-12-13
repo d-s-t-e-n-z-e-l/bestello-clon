@@ -19,7 +19,7 @@
             <span class="companyname">Bestello.de</span>
         </div>
         <div onclick="showflexbasket()" id="" class="smallbasket">
-            <img class="smallbasketimg" src="img/basket.png" alt="basket"><span class="smallmenucounter">X</span>
+            <img class="smallbasketimg" src="img/basket.png" alt="basket"><div id="smallmenucounter"></div>
         </div>
     </header>
     <main class="maindiv">
@@ -99,7 +99,7 @@
                 <span class="toLess" id="toLess">Leider kannst du noch nicht bestellen. India Palace liefert erst ab einem
                     Mindestbestellwert von 15€ (exkl. Lieferkosten)</span>
             </figure>
-            <div class="buttondiv" id="orderbutton"><button class="orderbutton" id="orderbuttoncolor">BESTELLEN</button></div>
+            <div class="buttondiv" id="orderbutton"><button class="orderbutton" id="orderbuttoncolor" onclick="sendOrder()">BESTELLEN</button></div>
         </aside>
     </main>
 

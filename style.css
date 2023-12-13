@@ -215,19 +215,23 @@ body {
 }
 
 .orderbutton {
-    background-color: rgb(141, 141, 145);
+    background-color: rgb(42, 42, 224);
     color: white;
     font-size: 25px;
     font-weight: bold;
     border-radius: 8px;
     width: 180px;
     border: unset;
-}
-
-.orderbuttonblue {
-    background-color: rgb(42, 42, 224) !important;
     cursor: pointer;
+    display: none;
 }
+    
+
+
+.orderbuttonset {
+    display: block !important;
+}
+   
 
 .flexbasket {
     position: fixed;

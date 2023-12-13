@@ -74,12 +74,10 @@ let dishes = [
 ]
 
 let categories = ['Vorspeisen', 'Suppen', 'Salate', 'Hauptgerichte', 'Kindergerichte', 'Nachspeisen',]
-
 let basketDishes = [];
 let basketPrices = [];
 let amounts = [];
 let subtotals = [];
-
 
 function load() {
     updateArrays();
@@ -87,6 +85,7 @@ function load() {
     renderMenuList();//die Speisekarte wird geladen
     renderBasket();// der Warenkorb, sofern was drin, wird geladen
     renderPricing();// Die Preisrechnung , sofern was drin, wird geladen
+    renderCounter();
 }
 
 function updateArrays() {
@@ -109,7 +108,6 @@ function renderBasket() {
     }
 }
 
-
 function renderBasketLines() {
     let lines = document.getElementById('menucounter');
     lines.innerHTML = '';
@@ -121,7 +119,6 @@ function renderBasketLines() {
     }
 
 }
-
 
 function basketLine(currentDish, currentPrice, currentamount, i) {
     return /*html*/`
@@ -144,14 +141,13 @@ function basketLine(currentDish, currentPrice, currentamount, i) {
     `
 }
 
-
 function renderPricing() {
     let pricing = document.getElementById('pricefigure');
     if (basketDishes.length > 0) {
         let netto = calculateNetto();
         let brutto = calculateBrutto(netto);
         pricing.innerHTML = pricingTemplate(netto, brutto);
-    }else{
+    } else {
         pricing.innerHTML = pricingTemplate(0, 0);
     }
 }
@@ -170,26 +166,36 @@ function calculateNetto() {
 
 function calculateBrutto(netto) {
     let brutto = netto + 7;
-    if (brutto > 15) {
+    if (brutto > 21) {
         removeMinimumHint()
     }
-    else{
+    else {
         setMimimunHint()
     }
     return brutto;
 }
 
-function removeMinimumHint(){
+function renderCounter() {
+    let counter = document.getElementById('smallmenucounter');
+    let count = amounts.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+    }, 0);
+    counter.innerHTML = counterTemplate(count);
+}
+
+function counterTemplate(count) {
+    return /*html*/`<span  class="smallmenucounter">${count}</span>`
+}
+
+function removeMinimumHint() {
     document.getElementById('toLess').classList.add('d-none');
-    document.getElementById('orderbuttoncolor').classList.add('orderbuttonblue');
+    document.getElementById('orderbuttoncolor').classList.add('orderbuttonset');
 }
 
-function setMimimunHint(){
+function setMimimunHint() {
     document.getElementById('toLess').classList.remove('d-none');
-    document.getElementById('orderbuttoncolor').classList.remove('orderbuttonblue');
+    document.getElementById('orderbuttoncolor').classList.remove('orderbuttonset');
 }
-
-
 
 function pricingTemplate(netto, brutto) {
     return /*html*/`
@@ -209,7 +215,6 @@ function pricingTemplate(netto, brutto) {
                 </div>
    `
 }
-
 
 function AddToBasket(index) {
     let newDish = getDishValue(index);
@@ -253,8 +258,16 @@ function deleteDish(i) {
     load();
 }
 
-
-
+function sendOrder() {
+    if (basketDishes.length > 0) {
+        basketDishes.splice(0, basketDishes.length);
+        basketPrices.splice(0, basketPrices.length);
+        amounts.splice(0, amounts.length);
+        alert('Deine Bestellung wurde überittelt.');
+        save();
+        load();
+    }
+}
 
 function getValues(divID) {
     let inputValue = document.getElementById(divID).innerHTML;
@@ -273,11 +286,9 @@ function getPriceValue(currentIndex) {
     return parseFloat(+calcPrice).toFixed(2);//gibt eine zahl als dezimalzahl mit 2 kommastellen wieder
 }
 
-
 function getDishIndex(newDish) {
     return basketDishes.indexOf(newDish);
 }
-
 
 function removePlaceholder() {
     if (basketDishes.length >= 1) {
@@ -288,7 +299,6 @@ function removePlaceholder() {
 function addPlaceholder() {
     document.getElementById('placeholder').classList.remove('d-none');
 }
-
 
 function renderMenuList() {
     let menulist = document.getElementById('menulist');
@@ -305,7 +315,6 @@ function renderMenuList() {
     }
 }
 
-
 function categoryTemplate(i) {
     return /*html*/`
                  <figure  id="${categories[i]}" class="menucollection figuremargin">
@@ -315,7 +324,6 @@ function categoryTemplate(i) {
                 </figure>
     `
 }
-
 
 function menuOptionTemplate(j) {
     return /*html*/` <div class="menubox">
@@ -330,7 +338,6 @@ function menuOptionTemplate(j) {
 `
 }
 
-
 function renderIcons() {
     if (localStorage.getItem('savedcolor')) {// wenn etwas im locstor existiert, dann lese diese werte für das array aus
         heartcolor = JSON.parse(localStorage.getItem('savedcolor'));  //dem array  werden die neuen werte aus dem local storage zugewiesen und sind bereit zum rendern, hier werden sie also returned
@@ -341,13 +348,11 @@ function renderIcons() {
     }
 }
 
-
 function setHeart(heartcolor) {
     return  /*html*/`   <img class="icons" src="img/info.png" alt="info">
                         <img onclick="like()" id="hearticon" class="icons" src="img/${heartcolor}" alt="heart">
                     `
 }
-
 
 function like() {
     let heart = document.getElementById('hearticon');
@@ -373,11 +378,9 @@ function saveArray(key, array) {
     localStorage.setItem(key, JSON.stringify(array));
 }
 
-
 function getArray(key) {
     return JSON.parse(localStorage.getItem(key));
 }
-
 
 function showflexbasket() {
     document.getElementById('restaurantsection').classList.add('blurdiv');
