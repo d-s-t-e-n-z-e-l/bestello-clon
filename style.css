@@ -156,6 +156,7 @@ body {
 .countline {
     display: flex;
     width: 150px;
+    gap: 14px;
 }
 
 .deletebutton {

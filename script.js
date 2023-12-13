@@ -78,7 +78,8 @@ let categories = ['Vorspeisen', 'Suppen', 'Salate', 'Hauptgerichte', 'Kindergeri
 let basketDishes = [];
 let basketPrices = [];
 let amounts = [];
-let cumulatetPrices = []
+let subtotals = [];
+
 
 function load() {
     updateArrays();
@@ -117,9 +118,8 @@ function renderBasketLines() {
         const currentPrice = (basketPrices[i] * amounts[i]).toFixed(2);
         const currentamount = amounts[i];
         lines.innerHTML += basketLine(currentDish, currentPrice, currentamount, i);
-        cumulatetPrices.push(currentPrice);// Summen der Gerichte werden in ein array gepusht
     }
-    saveArray('savedcumulation', cumulatetPrices);// werte des summenarrays werden gespeichert
+
 }
 
 
@@ -155,17 +155,22 @@ function renderPricing() {
 }
 
 function calculateNetto() {
-    cumulatetPrices = getArray('savedcumulation');//packt aus locstor die werte ins array cumulatedPrices
-    let linenettoprices = cumulatetPrices.map(item => parseFloat(item) || 0);// wandelt alle arraywerte in zahlen um 
-    let summe = linenettoprices.reduce((acc, val) => acc + val, 0);//summiert alle werte des arrays zu einem wert auf
-    // netto = summe.slice(0, -1);
-    return (summe).toFixed(2); // gibt den wert wieder
+    subtotals.length = 0;
+    for (let i = 0; i < basketDishes.length; i++) {
+        const subtotal = basketPrices[i] * amounts[i];//multipliziert jedes Dish mit dem mount aus den arrays
+        subtotals.push(subtotal);//schiebt die zwischenergebnisse in ein array
+    }
+    let netto = subtotals.reduce(function (accumulator, currentValue) {
+        return accumulator + currentValue;
+    }, 0);
+    return netto
 }
 
 function calculateBrutto(netto) {
     let brutto = netto + 7;
-    return (brutto).toFixed(2);
+    return parseFloat(+brutto).toFixed(2);
 }
+
 
 
 function pricingTemplate(netto, brutto) {
@@ -173,7 +178,7 @@ function pricingTemplate(netto, brutto) {
     <div id="">
                     <div class="pricing">
                         <span>Zwischensumme</span>
-                        <span>${netto} €</span>
+                        <span>${parseFloat(+netto).toFixed(2)} €</span>
                     </div>
                     <div class="pricing">
                         <span>Lieferkosten</span>
@@ -223,7 +228,6 @@ function decreaseAmount(i) {
 }
 
 function deleteDish(i) {
-    console.log('delete')
     basketDishes.splice(i, 1);
     basketPrices.splice(i, 1);
     amounts.splice(i, 1);
