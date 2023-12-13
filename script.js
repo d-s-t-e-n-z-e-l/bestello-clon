@@ -151,6 +151,8 @@ function renderPricing() {
         let netto = calculateNetto();
         let brutto = calculateBrutto(netto);
         pricing.innerHTML = pricingTemplate(netto, brutto);
+    }else{
+        pricing.innerHTML = pricingTemplate(0, 0);
     }
 }
 
@@ -168,7 +170,23 @@ function calculateNetto() {
 
 function calculateBrutto(netto) {
     let brutto = netto + 7;
-    return parseFloat(+brutto).toFixed(2);
+    if (brutto > 15) {
+        removeMinimumHint()
+    }
+    else{
+        setMimimunHint()
+    }
+    return brutto;
+}
+
+function removeMinimumHint(){
+    document.getElementById('toLess').classList.add('d-none');
+    document.getElementById('orderbuttoncolor').classList.add('orderbuttonblue');
+}
+
+function setMimimunHint(){
+    document.getElementById('toLess').classList.remove('d-none');
+    document.getElementById('orderbuttoncolor').classList.remove('orderbuttonblue');
 }
 
 
@@ -186,7 +204,7 @@ function pricingTemplate(netto, brutto) {
                     </div>
                     <div class="pricing wholesum">
                         <span>Gesamtpreis</span>
-                        <span>${brutto} €</span>
+                        <span>${parseFloat(+brutto).toFixed(2)} €</span>
                     </div>
                 </div>
    `
