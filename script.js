@@ -398,7 +398,7 @@ function closebasket() {
 
 function flexbasketresponsive() {
     screenWidth = window.innerWidth;
-    if (screenWidth > 1570) {
+    if (screenWidth > 1620) {
         closebasket()
     }
 }

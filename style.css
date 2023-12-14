@@ -89,6 +89,7 @@ body {
     flex-direction: column;
     padding-right: 24px;
     height: 80vh;
+    overflow: auto;
 
 }
 
@@ -214,6 +215,12 @@ body {
     margin-top: 16px;
 }
 
+.orderbuttondiv {
+    display: flex;
+    justify-content: center;
+    margin-top: 16px;
+}
+
 .orderbutton {
     background-color: rgb(42, 42, 224);
     color: white;
@@ -225,13 +232,13 @@ body {
     cursor: pointer;
     display: none;
 }
-    
+
 
 
 .orderbuttonset {
     display: block !important;
 }
-   
+
 
 .flexbasket {
     position: fixed;
@@ -418,13 +425,13 @@ body {
     border-color: grey;
 }
 
-@media(min-width:1570px) {
+@media(min-width:1620px) {
     .buttondiv {
         display: none;
     }
 }
 
-@media(max-width: 1570px) {
+@media(max-width: 1620px) {
     .asidebasket {
         position: fixed;
         background-color: white;
@@ -458,12 +465,6 @@ body {
     .menuband {
         display: none;
     }
-}
-
-@media(max-width: 500px) {
-    .restaurantlogo {
-        display: none;
-    }
 
     .menucounter {
         display: flex;
@@ -472,10 +473,16 @@ body {
         gap: 8px;
 
     }
+}
+
+@media(max-width: 500px) {
+    .restaurantlogo {
+        display: none;
+    }
 
 }
 
-@media(max-width: 400px) {
+@media(max-width: 450px) {
     .hearticondiv {
         display: none;
     }
